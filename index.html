@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de códigos QR</title>
+</head>
+<body>
+    <h1>Generador de códigos QR</h1><hr/><br/>
+    <label for="link-qr">Link que deseas convertir a QR: </label>
+    <input id="link-qr" type="text"/><br/>
+
+    <button id="convertir-a-qr">Convertir a QR</button>
+    <div style="display: flex; justify-content: center;">
+        <div id="qrcode"></div>
+    </div>
+    <script src="qrcode.min.js"></script>
+    <script>
+        document.getElementById("convertir-a-qr").addEventListener("click", () => {
+            const link = document.getElementById("link-qr").value
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: link,
+                width: 250,
+                height: 250,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        })
+    </script>
+</body>
+</html>
